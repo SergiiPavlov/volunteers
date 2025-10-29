@@ -1,0 +1,22 @@
+{
+  "brand": "Volontery",
+  "nav": {
+    "opportunities": "Opportunities",
+    "organizations": "Organizations",
+    "blog": "Blog",
+    "learn": "Learn",
+    "about": "About",
+    "donate": "Donate",
+    "contact": "Contact"
+  },
+  "heroTitle": "Volunteering that changes communities",
+  "heroSubtitle": "Join projects nearby or online. Find your cause in 2 minutes.",
+  "ctaVolunteer": "Become a volunteer",
+  "ctaFindVolunteers": "Find volunteers",
+  "topOpportunities": "Top opportunities",
+  "whyUs": "Why us",
+  "partners": "Partners",
+  "stories": "Volunteer stories",
+  "join": "Join",
+  "footerRights": "All rights reserved"
+}
