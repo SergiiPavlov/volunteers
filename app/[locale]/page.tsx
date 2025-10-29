@@ -15,27 +15,32 @@ function dummy(locale: Locale): Opportunity[] {
   }));
 }
 
-export default function Page({ params }: { params: { locale: Locale } }) {
-  const t = dict[params.locale] as any;
-  const items = dummy(params.locale);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = dict[locale] as any;
+  const items = dummy(locale);
   return (
     <div className="space-y-10">
       <section className="text-center py-10">
         <h1 className="text-4xl md:text-5xl font-heading font-bold">{t.heroTitle}</h1>
         <p className="text-neutral-600 mt-4 max-w-3xl mx-auto">{t.heroSubtitle}</p>
         <div className="mt-6 flex items-center justify-center gap-3">
-          <a href={`/${params.locale}/opportunities`} className="btn btn-primary">{t.ctaVolunteer}</a>
-          <a href={`/${params.locale}/opportunities`} className="btn btn-secondary">{t.ctaFindVolunteers}</a>
+          <a href={`/${locale}/opportunities`} className="btn btn-primary">{t.ctaVolunteer}</a>
+          <a href={`/${locale}/opportunities`} className="btn btn-secondary">{t.ctaFindVolunteers}</a>
         </div>
       </section>
 
       <section>
         <div className="flex items-end justify-between mb-4">
           <h2 className="text-2xl font-semibold">{t.topOpportunities}</h2>
-          <a className="text-primary" href={`/${params.locale}/opportunities`}>See all</a>
+          <a className="text-primary" href={`/${locale}/opportunities`}>See all</a>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map(item => <OpportunityCard key={item.slug} item={item} locale={params.locale} />)}
+          {items.map(item => <OpportunityCard key={item.slug} item={item} locale={locale} />)}
         </div>
       </section>
 

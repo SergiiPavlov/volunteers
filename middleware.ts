@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
 const locales = ['ru', 'uk', 'en'];
 const DEFAULT = 'uk';
 
-export function middleware(request) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Ignore next internals and files
