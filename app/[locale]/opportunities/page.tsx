@@ -14,8 +14,13 @@ function dummy(locale: Locale): Opportunity[] {
   }));
 }
 
-export default function Page({ params }: { params: { locale: Locale } }) {
-  const items = dummy(params.locale);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const items = dummy(locale);
   return (
     <div className="space-y-6">
       <div className="card p-4">
@@ -28,7 +33,7 @@ export default function Page({ params }: { params: { locale: Locale } }) {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {items.map(it => <OpportunityCard key={it.slug} item={it} locale={params.locale} />)}
+        {items.map(it => <OpportunityCard key={it.slug} item={it} locale={locale} />)}
       </div>
     </div>
   )

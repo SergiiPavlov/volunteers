@@ -1,7 +1,11 @@
 import { Locale } from '@/lib/i18n/locales';
 
-export default function Page({ params }: { params: { locale: Locale, slug: string } }) {
-  const { slug } = params;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: Locale; slug: string }>;
+}) {
+  const { slug } = await params;
   const imgUrl = `https://picsum.photos/seed/${encodeURIComponent(slug)}/1200/500`;
   return (
     <article className="space-y-6">
