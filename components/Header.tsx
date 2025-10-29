@@ -51,8 +51,16 @@ export default function Header({ locale }: Props) {
           </select>
         </div>
 
-        {/* Mobile controls */}
+        {/* Mobile controls: language select stays in header + burger */}
         <div className="md:hidden flex items-center gap-2">
+          <select
+            aria-label="Language"
+            defaultValue={locale}
+            onChange={(e) => { window.location.assign(switchTo(e.target.value as Locale)); }}
+            className="border rounded-md h-9 px-2"
+          >
+            {locales.map(l => <option key={l} value={l}>{l.toUpperCase()}</option>)}
+          </select>
           <button
             type="button"
             aria-label="Open menu"
